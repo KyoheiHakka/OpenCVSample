@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5711E7F9750701D278BE2104 /* Pods_OpenCVSampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2009A61E2B2134573C21B520 /* Pods_OpenCVSampleUITests.framework */; };
+		590ACBF132DDF46971F45BDE /* Pods_OpenCVSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9CF1C004A6DA402A7AAB42 /* Pods_OpenCVSample.framework */; };
+		912B020BBEEE4036D0581F8D /* Pods_OpenCVSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9E9BF3E9CAC60445D041BD /* Pods_OpenCVSampleTests.framework */; };
 		E299875B214BA3170078E849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E299875A214BA3170078E849 /* AppDelegate.swift */; };
 		E299875D214BA3170078E849 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E299875C214BA3170078E849 /* ViewController.swift */; };
 		E2998760214BA3170078E849 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E299875E214BA3170078E849 /* Main.storyboard */; };
@@ -14,6 +17,7 @@
 		E2998765214BA3180078E849 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2998763214BA3180078E849 /* LaunchScreen.storyboard */; };
 		E2998770214BA3180078E849 /* OpenCVSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E299876F214BA3180078E849 /* OpenCVSampleTests.swift */; };
 		E299877B214BA3180078E849 /* OpenCVSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E299877A214BA3180078E849 /* OpenCVSampleUITests.swift */; };
+		E29987C9214DF7830078E849 /* OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = E29987C8214DF7830078E849 /* OpenCV.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2009A61E2B2134573C21B520 /* Pods_OpenCVSampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenCVSampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87EDB350E838270207DCE8D1 /* Pods-OpenCVSampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenCVSampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OpenCVSampleTests/Pods-OpenCVSampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8977A3A3A5B414FED1E8F500 /* Pods-OpenCVSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenCVSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OpenCVSample/Pods-OpenCVSample.debug.xcconfig"; sourceTree = "<group>"; };
+		9FB0A977A534A0E0285E06B3 /* Pods-OpenCVSampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenCVSampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OpenCVSampleUITests/Pods-OpenCVSampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BA696DE8A6B336AEDCFB7ABB /* Pods-OpenCVSampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenCVSampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenCVSampleUITests/Pods-OpenCVSampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BB9CF1C004A6DA402A7AAB42 /* Pods_OpenCVSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenCVSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF9E9BF3E9CAC60445D041BD /* Pods_OpenCVSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenCVSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA859D2DB0B13D32C1051EA7 /* Pods-OpenCVSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenCVSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenCVSample/Pods-OpenCVSample.release.xcconfig"; sourceTree = "<group>"; };
+		DAF48496AC33F71F50D26020 /* Pods-OpenCVSampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenCVSampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenCVSampleTests/Pods-OpenCVSampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		E2998757214BA3170078E849 /* OpenCVSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCVSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E299875A214BA3170078E849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E299875C214BA3170078E849 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +60,9 @@
 		E2998776214BA3180078E849 /* OpenCVSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenCVSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E299877A214BA3180078E849 /* OpenCVSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVSampleUITests.swift; sourceTree = "<group>"; };
 		E299877C214BA3180078E849 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E29987C7214DF7830078E849 /* OpenCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCV.h; sourceTree = "<group>"; };
+		E29987C8214DF7830078E849 /* OpenCV.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCV.mm; sourceTree = "<group>"; };
+		E29987CA214DF7930078E849 /* OpenCVSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenCVSample-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				590ACBF132DDF46971F45BDE /* Pods_OpenCVSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				912B020BBEEE4036D0581F8D /* Pods_OpenCVSampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +86,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5711E7F9750701D278BE2104 /* Pods_OpenCVSampleUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38D90C27EE1E10AE676B8F1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB9CF1C004A6DA402A7AAB42 /* Pods_OpenCVSample.framework */,
+				BF9E9BF3E9CAC60445D041BD /* Pods_OpenCVSampleTests.framework */,
+				2009A61E2B2134573C21B520 /* Pods_OpenCVSampleUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E22D1E9D411E16855862B1EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8977A3A3A5B414FED1E8F500 /* Pods-OpenCVSample.debug.xcconfig */,
+				DA859D2DB0B13D32C1051EA7 /* Pods-OpenCVSample.release.xcconfig */,
+				87EDB350E838270207DCE8D1 /* Pods-OpenCVSampleTests.debug.xcconfig */,
+				DAF48496AC33F71F50D26020 /* Pods-OpenCVSampleTests.release.xcconfig */,
+				9FB0A977A534A0E0285E06B3 /* Pods-OpenCVSampleUITests.debug.xcconfig */,
+				BA696DE8A6B336AEDCFB7ABB /* Pods-OpenCVSampleUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E299874E214BA3170078E849 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +123,8 @@
 				E299876E214BA3180078E849 /* OpenCVSampleTests */,
 				E2998779214BA3180078E849 /* OpenCVSampleUITests */,
 				E2998758214BA3170078E849 /* Products */,
+				E22D1E9D411E16855862B1EF /* Pods */,
+				38D90C27EE1E10AE676B8F1A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +141,12 @@
 		E2998759214BA3170078E849 /* OpenCVSample */ = {
 			isa = PBXGroup;
 			children = (
-				E299875A214BA3170078E849 /* AppDelegate.swift */,
+				E2998788214BA38C0078E849 /* Assets */,
 				E299875C214BA3170078E849 /* ViewController.swift */,
 				E299875E214BA3170078E849 /* Main.storyboard */,
-				E2998761214BA3180078E849 /* Assets.xcassets */,
-				E2998763214BA3180078E849 /* LaunchScreen.storyboard */,
-				E2998766214BA3180078E849 /* Info.plist */,
+				E29987CA214DF7930078E849 /* OpenCVSample-Bridging-Header.h */,
+				E29987C7214DF7830078E849 /* OpenCV.h */,
+				E29987C8214DF7830078E849 /* OpenCV.mm */,
 			);
 			path = OpenCVSample;
 			sourceTree = "<group>";
@@ -125,6 +169,17 @@
 			path = OpenCVSampleUITests;
 			sourceTree = "<group>";
 		};
+		E2998788214BA38C0078E849 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E299875A214BA3170078E849 /* AppDelegate.swift */,
+				E2998761214BA3180078E849 /* Assets.xcassets */,
+				E2998763214BA3180078E849 /* LaunchScreen.storyboard */,
+				E2998766214BA3180078E849 /* Info.plist */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,6 +187,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E299877F214BA3180078E849 /* Build configuration list for PBXNativeTarget "OpenCVSample" */;
 			buildPhases = (
+				2CCE886506582FDAF5FB1C55 /* [CP] Check Pods Manifest.lock */,
 				E2998753214BA3170078E849 /* Sources */,
 				E2998754214BA3170078E849 /* Frameworks */,
 				E2998755214BA3170078E849 /* Resources */,
@@ -149,6 +205,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2998782214BA3180078E849 /* Build configuration list for PBXNativeTarget "OpenCVSampleTests" */;
 			buildPhases = (
+				601FFF56756E5290DBB58D3D /* [CP] Check Pods Manifest.lock */,
 				E2998767214BA3180078E849 /* Sources */,
 				E2998768214BA3180078E849 /* Frameworks */,
 				E2998769214BA3180078E849 /* Resources */,
@@ -167,6 +224,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2998785214BA3180078E849 /* Build configuration list for PBXNativeTarget "OpenCVSampleUITests" */;
 			buildPhases = (
+				5BF0A771C5535A146A54D024 /* [CP] Check Pods Manifest.lock */,
 				E2998772214BA3180078E849 /* Sources */,
 				E2998773214BA3180078E849 /* Frameworks */,
 				E2998774214BA3180078E849 /* Resources */,
@@ -193,6 +251,7 @@
 				TargetAttributes = {
 					E2998756214BA3170078E849 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					E299876A214BA3180078E849 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -251,12 +310,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2CCE886506582FDAF5FB1C55 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OpenCVSample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BF0A771C5535A146A54D024 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OpenCVSampleUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		601FFF56756E5290DBB58D3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OpenCVSampleTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E2998753214BA3170078E849 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E299875D214BA3170078E849 /* ViewController.swift in Sources */,
+				E29987C9214DF7830078E849 /* OpenCV.mm in Sources */,
 				E299875B214BA3170078E849 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,17 +545,21 @@
 		};
 		E2998780214BA3180078E849 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8977A3A3A5B414FED1E8F500 /* Pods-OpenCVSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFSWD6G3BK;
-				INFOPLIST_FILE = OpenCVSample/Info.plist;
+				INFOPLIST_FILE = OpenCVSample/Assets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KyoheiHakka.OpenCVSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenCVSample/OpenCVSample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -446,17 +567,20 @@
 		};
 		E2998781214BA3180078E849 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA859D2DB0B13D32C1051EA7 /* Pods-OpenCVSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFSWD6G3BK;
-				INFOPLIST_FILE = OpenCVSample/Info.plist;
+				INFOPLIST_FILE = OpenCVSample/Assets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KyoheiHakka.OpenCVSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenCVSample/OpenCVSample-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -464,6 +588,7 @@
 		};
 		E2998783214BA3180078E849 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87EDB350E838270207DCE8D1 /* Pods-OpenCVSampleTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -485,6 +610,7 @@
 		};
 		E2998784214BA3180078E849 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAF48496AC33F71F50D26020 /* Pods-OpenCVSampleTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -506,6 +632,7 @@
 		};
 		E2998786214BA3180078E849 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FB0A977A534A0E0285E06B3 /* Pods-OpenCVSampleUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -526,6 +653,7 @@
 		};
 		E2998787214BA3180078E849 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA696DE8A6B336AEDCFB7ABB /* Pods-OpenCVSampleUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
