@@ -18,6 +18,9 @@
 		E2998770214BA3180078E849 /* OpenCVSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E299876F214BA3180078E849 /* OpenCVSampleTests.swift */; };
 		E299877B214BA3180078E849 /* OpenCVSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E299877A214BA3180078E849 /* OpenCVSampleUITests.swift */; };
 		E29987C9214DF7830078E849 /* OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = E29987C8214DF7830078E849 /* OpenCV.mm */; };
+		E2A3F9192154905800A8F756 /* ImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A3F9182154905800A8F756 /* ImageEnum.swift */; };
+		E2A3F91D2154960900A8F756 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A3F91C2154960900A8F756 /* Date.swift */; };
+		E2A3F9232154E75000A8F756 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A3F9222154E75000A8F756 /* UIImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		E29987C7214DF7830078E849 /* OpenCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCV.h; sourceTree = "<group>"; };
 		E29987C8214DF7830078E849 /* OpenCV.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCV.mm; sourceTree = "<group>"; };
 		E29987CA214DF7930078E849 /* OpenCVSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenCVSample-Bridging-Header.h"; sourceTree = "<group>"; };
+		E2A3F9182154905800A8F756 /* ImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEnum.swift; sourceTree = "<group>"; };
+		E2A3F91C2154960900A8F756 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		E2A3F9222154E75000A8F756 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,7 @@
 		E2998759214BA3170078E849 /* OpenCVSample */ = {
 			isa = PBXGroup;
 			children = (
+				E2A3F91B215495F200A8F756 /* Extension */,
 				E2998788214BA38C0078E849 /* Assets */,
 				E299875C214BA3170078E849 /* ViewController.swift */,
 				E299875E214BA3170078E849 /* Main.storyboard */,
@@ -173,11 +180,29 @@
 			isa = PBXGroup;
 			children = (
 				E299875A214BA3170078E849 /* AppDelegate.swift */,
+				E2A3F91A2154905D00A8F756 /* Enum */,
 				E2998761214BA3180078E849 /* Assets.xcassets */,
 				E2998763214BA3180078E849 /* LaunchScreen.storyboard */,
 				E2998766214BA3180078E849 /* Info.plist */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		E2A3F91A2154905D00A8F756 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				E2A3F9182154905800A8F756 /* ImageEnum.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		E2A3F91B215495F200A8F756 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E2A3F91C2154960900A8F756 /* Date.swift */,
+				E2A3F9222154E75000A8F756 /* UIImage.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,8 +398,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E299875D214BA3170078E849 /* ViewController.swift in Sources */,
+				E2A3F91D2154960900A8F756 /* Date.swift in Sources */,
 				E29987C9214DF7830078E849 /* OpenCV.mm in Sources */,
+				E2A3F9192154905800A8F756 /* ImageEnum.swift in Sources */,
 				E299875B214BA3170078E849 /* AppDelegate.swift in Sources */,
+				E2A3F9232154E75000A8F756 /* UIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

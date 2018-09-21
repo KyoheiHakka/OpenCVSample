@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,17 +24,44 @@
                                 <rect key="frame" x="67" y="184" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tpj-v6-Xom">
+                                <rect key="frame" x="0.0" y="600.5" width="375" height="66.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fC2-3w-l0X">
+                                <rect key="frame" x="159.5" y="606" width="56.5" height="56.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fC2-3w-l0X" secondAttribute="height" multiplier="1:1" id="fU8-n4-7WJ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="img_playButton"/>
+                                <connections>
+                                    <action selector="recordingButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MZV-cq-PZ3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Tpj-v6-Xom" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="JRz-Q8-n9F"/>
+                            <constraint firstItem="fC2-3w-l0X" firstAttribute="centerY" secondItem="Tpj-v6-Xom" secondAttribute="centerY" id="fCY-CH-0VN"/>
+                            <constraint firstItem="Tpj-v6-Xom" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gH4-ig-QLP"/>
+                            <constraint firstItem="fC2-3w-l0X" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.15" id="jBH-3d-ffm"/>
+                            <constraint firstItem="Tpj-v6-Xom" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jlp-yz-Gbf"/>
+                            <constraint firstItem="fC2-3w-l0X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pv6-YY-9v0"/>
+                            <constraint firstItem="Tpj-v6-Xom" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wgR-uo-puk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="button" destination="fC2-3w-l0X" id="Sid-x6-vnL"/>
                         <outlet property="cameraImageView" destination="jw8-Sj-8r9" id="MFf-XD-4hC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-279" y="124"/>
+            <point key="canvasLocation" x="-279.19999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="img_playButton" width="671" height="670"/>
+    </resources>
 </document>
