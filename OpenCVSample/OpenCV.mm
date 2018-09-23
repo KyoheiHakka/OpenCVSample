@@ -112,5 +112,120 @@
     }
 }
 
-@end
+// *************** カスケードの処理 ***************
+cv::CascadeClassifier faceCas;
+cv::CascadeClassifier eyeCas;
+bool active;
 
+- (bool) isActive{ return active; }
+
+// 顔の識別器をセット
+-(bool) setFaceXML:(NSString *)name{
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *path = [bundle pathForResource: name ofType:@"xml"];
+    std::string cascadeName = (char *) [path UTF8String];
+    if (!faceCas.load(cascadeName)) {
+        active = false;
+        return active;
+    }
+    active = true;
+    return active;
+}
+
+-(bool) setEyeXML:(NSString *)name{
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *path = [bundle pathForResource: name ofType:@"xml"];
+    std::string cascadeName = (char *) [path UTF8String];
+    if (!eyeCas.load(cascadeName)) {
+        active = false;
+        return active;
+    }
+    active = true;
+    return active;
+}
+
+//顔の検出
+- (void) faceDetect: (UIImage *) image : (NSMutableArray*) arr{
+    // UIImage -> cv::Mat変換
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
+    CGFloat cols = image.size.width;
+    CGFloat rows = image.size.height;
+    
+    cv::Mat mat(rows, cols, CV_8UC4);
+    
+    CGContextRef contextRef = CGBitmapContextCreate(mat.data,
+                                                    cols,
+                                                    rows,
+                                                    8,
+                                                    mat.step[0],
+                                                    colorSpace,
+                                                    kCGImageAlphaNoneSkipLast |
+                                                    kCGBitmapByteOrderDefault);
+    
+    CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows), image.CGImage);
+    CGContextRelease(contextRef);
+    
+    // 検出
+    std::vector<cv::Rect> targets;
+    std::vector<cv::Rect> targets2;
+    
+    //    cascade.detectMultiScale(mat, targets);
+    faceCas.detectMultiScale(mat, //画像
+                             targets, //ターゲット
+                             1.1, //縮小スケール
+                             5, //最小矩形数（これ以上の矩形が集中した部分を検出）
+                             CV_HAAR_SCALE_IMAGE, //フラグ
+                             cv::Size(30, 30)); //これよりも小さい物体は無視
+    
+    //検出した領域の座標を格納
+    for (int i = 0; i < targets.size(); i++){
+        cv::Rect rect = targets[i];
+        [arr addObject: [NSNumber numberWithInteger: rect.x]];
+        [arr addObject: [NSNumber numberWithInteger: rect.y]];
+        [arr addObject: [NSNumber numberWithInteger: rect.width]];
+        [arr addObject: [NSNumber numberWithInteger: rect.height]];
+    }
+}
+
+- (void) eyeDetect: (UIImage *) image: (NSMutableArray*) arr{
+    // UIImage -> cv::Mat変換
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
+    CGFloat cols = image.size.width;
+    CGFloat rows = image.size.height;
+    
+    cv::Mat mat(rows, cols, CV_8UC4);
+    
+    CGContextRef contextRef = CGBitmapContextCreate(mat.data,
+                                                    cols,
+                                                    rows,
+                                                    8,
+                                                    mat.step[0],
+                                                    colorSpace,
+                                                    kCGImageAlphaNoneSkipLast |
+                                                    kCGBitmapByteOrderDefault);
+    
+    CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows), image.CGImage);
+    CGContextRelease(contextRef);
+    
+    // 検出
+    std::vector<cv::Rect> targets;
+    std::vector<cv::Rect> targets2;
+    
+    //    cascade.detectMultiScale(mat, targets);
+    eyeCas.detectMultiScale(mat, //画像
+                             targets, //ターゲット
+                             1.1, //縮小スケール
+                             3, //最小矩形数（これ以上の矩形が集中した部分を検出）
+                             CV_HAAR_SCALE_IMAGE, //フラグ
+                             cv::Size(30, 30)); //これよりも小さい物体は無視
+    
+    //検出した領域の座標を格納
+    for (int i = 0; i < targets.size(); i++){
+        cv::Rect rect = targets[i];
+        [arr addObject: [NSNumber numberWithInteger: rect.x]];
+        [arr addObject: [NSNumber numberWithInteger: rect.y]];
+        [arr addObject: [NSNumber numberWithInteger: rect.width]];
+        [arr addObject: [NSNumber numberWithInteger: rect.height]];
+    }
+}
+@end

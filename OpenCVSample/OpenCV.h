@@ -9,4 +9,8 @@
 //- : インスタンスメソッド
 - (UIImage *)toGrayImg:(UIImage *)img;
 - (void) getSkinArea:(UIImage *) img img: (NSMutableArray *) arr;
+- (bool)setFaceXML:(NSString *)name;
+- (bool)setEyeXML:(NSString *)name;
+- (void) faceDetect: (UIImage *)image: (NSMutableArray *) arr;
+- (void) eyeDetect: (UIImage *)image: (NSMutableArray *) arr;
 @end

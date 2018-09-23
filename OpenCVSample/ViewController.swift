@@ -8,8 +8,10 @@ import AssetsLibrary
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var cameraImageView: UIImageView!
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var WinkLabel: UILabel!
     
     var openCV = OpenCV()
     
@@ -27,10 +29,22 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     var recordingMode = false //録画開始モード
     
+    var wink: Wink = Wink.close
+    var winkStartTime: Double = 0.0 //Winkがスタートした時間
+    var winkEndTime: Double = 0.0 //Winkがエンドした時間
+    
+    var eyeStatusArray = [Wink]() //過去のWink回数
+    let EyeStatusStackCount = 6 //過去何回のデータを用いるか
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         super.viewDidLoad()
         
+        // *************** XMLのセット ***************
+        openCV.setFaceXML(CascadeName.face.rawValue) //顔
+        openCV.setEyeXML(CascadeName.eye.rawValue) //眼
+        
+        // *************** カメラ準備 ***************
         if initCamera() {
             session.startRunning()
         }else{
@@ -41,6 +55,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.backView.frame = self.view.frame
     }
 
     
@@ -54,8 +73,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         //        AVCaptureSession.Preset.Low : 192x144
  
         
-        let frame = CMTimeMake(1, 20) //フレームレート
-        let position = AVCaptureDevice.Position.back //フロントカメラかバックカメラか
+        let frame = CMTimeMake(value: 1, timescale: 30) //フレームレート
+        let position = AVCaptureDevice.Position.front //フロントカメラかバックカメラか
         
         setImageViewLayout(preset: preset)//UIImageViewの大きさを調整
         
@@ -134,15 +153,159 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             if self.frameNumber == 0{
                 self.startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
             }
-            
             let img = self.captureImage(sampleBuffer) //UIImageへ変換
             var resultImg: UIImage //結果を格納する
 
             // *************** 画像処理 ***************
+                //①グレー変換
 //            resultImg = self.openCV.toGrayImg(img) //変換
-            let arr = NSMutableArray()
-            self.openCV.getSkinArea(img, img: arr)
-            resultImg = self.drawRectangle(image: img, rect: arr)
+            
+                //②肌色検出
+//            let arr = NSMutableArray()
+//            self.openCV.getSkinArea(img, img: arr)
+//            resultImg = self.drawRectangle(image: img, rect: arr)
+            
+                // ③眼の検出
+            let detectedFace = NSMutableArray() //検出された顔
+            let detectedEye = NSMutableArray() //検出された眼
+            self.openCV.faceDetect(img, detectedFace) //顔を検出
+            
+            if detectedFace.count > 0{
+                //顔の領域を切り取り
+                let center: (x: CGFloat, y: CGFloat) = (x: img.size.width / 2, y: img.size.height / 2) //画像の中央
+                var centerId = -1 //中央に近いid
+                var minDiff = CGFloat.getDiff(x1: 0, x2: img.size.width, y1: 0, y2: img.size.height) //最も小さい差分
+                //得られた顔の中から最も中央に近いものを選択する
+                for i in 0 ..< (detectedFace.count / 4){
+                    let x:Int = detectedFace[i * 4 + 0] as! NSNumber as! Int
+                    let y:Int = detectedFace[i * 4 + 1] as! NSNumber as! Int
+                    //                let width:Int = detectedFace[i * 4 + 2] as! NSNumber as! Int
+                    //                let height:Int = detectedFace[i * 4 + 3] as! NSNumber as! Int
+                    let diff = CGFloat.getDiff(x1: center.x, x2: CGFloat(x), y1: center.y, y2: CGFloat(y))
+                    if diff < minDiff{
+                        minDiff = diff
+                        centerId = i
+                    }
+                }
+
+                //顔の部分結果
+                let fx = CGFloat(detectedFace[centerId * 4 + 0] as! NSNumber as! Int)
+                let fy = CGFloat(detectedFace[centerId * 4 + 1] as! NSNumber as! Int)
+                let fw = CGFloat(detectedFace[centerId * 4 + 2] as! NSNumber as! Int)
+                let fh = CGFloat(detectedFace[centerId * 4 + 3] as! NSNumber as! Int)
+                let faceImg = img.cropping(to: CGRect(x: fx, y: fy, width: fw, height: fh/2))!
+//                self.faceImageView.image = faceImg
+//                self.faceImageView.frame.size = CGSize(width: fw, height: fh)
+                
+                //眼を抽出
+                self.openCV.eyeDetect(faceImg, detectedEye)
+                var detects = [Int]() //検出された矩形
+                for i in 0..<detectedEye.count / 4{
+                    let ix:Int = (detectedEye[i * 4 + 0] as! NSNumber as! Int)
+                    let iy:Int = (detectedEye[i * 4 + 1] as! NSNumber as! Int)
+                    let iw:Int = detectedEye[i * 4 + 2] as! NSNumber as! Int
+                    let ih:Int = detectedEye[i * 4 + 3] as! NSNumber as! Int
+                    var collision = false
+                    for j in detects{
+                        let jx:Int = (detectedEye[j * 4 + 0] as! NSNumber as! Int)
+                        let jy:Int = (detectedEye[j * 4 + 1] as! NSNumber as! Int)
+                        if (ix + iw/2) > jx && (ix + iw/2) < jx &&//x座標が中
+                            (iy + ih/2) > jy && (iy + ih/2) < jy{ //y座標が中
+                            collision = true
+                        }
+                    }
+                    if !collision{detects.append(i)}
+                }
+                
+                switch detects.count{
+                case 0:
+                    if self.eyeStatusArray.count < self.EyeStatusStackCount{
+                        self.eyeStatusArray.append(.close)
+                    }else{
+                        self.eyeStatusArray.remove(at: 0)
+                        self.eyeStatusArray.append(.close)
+                    }
+                case 1:
+                    if CGFloat(detectedEye[detects[0] * 4 + 0] as! NSNumber as! Int + Int(fx)) < center.x{
+                        //右側の眼
+                        if self.eyeStatusArray.count < self.EyeStatusStackCount{
+                            self.eyeStatusArray.append(.right)
+                        }else{
+                            self.eyeStatusArray.remove(at: 0)
+                            self.eyeStatusArray.append(.right)
+                        }
+                    }else{
+                        //左側の眼
+                        if self.eyeStatusArray.count < self.EyeStatusStackCount{
+                            self.eyeStatusArray.append(.left)
+                        }else{
+                            self.eyeStatusArray.remove(at: 0)
+                            self.eyeStatusArray.append(.left)
+                        }
+//                        if !self.wink.isWink(){self.winkStartTime = self.getCurrentTime()}
+                    }
+                case 2:
+                    if self.eyeStatusArray.count < self.EyeStatusStackCount{
+                        self.eyeStatusArray.append(.doubleEye)
+                    }else{
+                        self.eyeStatusArray.remove(at: 0)
+                        self.eyeStatusArray.append(.doubleEye)
+                    }
+                default: break
+//                    D("Error \(detects.count)")
+                }
+                
+                //winkの種類を数える
+                var kindsArray: [Wink:Int] = [.right:0, .left:0, .doubleEye:0, .close:0] //各回数
+                if self.eyeStatusArray.count == self.EyeStatusStackCount{
+                    for kind in self.eyeStatusArray{
+                        let num = kindsArray[kind]!
+                        kindsArray[kind] = num + 1
+                    }
+                    //winkの種類を判別
+                    var max = 0
+                    for k in [Wink.right, Wink.left, Wink.doubleEye, Wink.close]{
+                        if max < kindsArray[k]!{
+                            max = kindsArray[k]!
+                            self.wink = k
+                        }
+                    }
+                }else{
+                    self.wink = Wink.doubleEye
+                }
+                
+                self.winkActivation()
+                
+                // winkの時間を計測
+                if self.winkStartTime == -1 && self.wink.isWink(){
+                    self.winkStartTime = self.getCurrentTime()
+                }else if self.winkStartTime != -1 && self.wink == Wink.doubleEye{
+                    self.winkEndTime = self.getCurrentTime()
+                    D(self.winkEndTime - self.winkStartTime)
+                    self.winkStartTime = -1
+                }
+                
+                //眼に矩形を表示
+                resultImg = img
+                UIGraphicsBeginImageContext(resultImg.size)
+                resultImg.draw(in: CGRect.init(x: 0, y: 0, width: img.size.width, height: img.size.height))
+                let context = UIGraphicsGetCurrentContext()
+                context?.setStrokeColor(UIColor.red.cgColor) //線の色
+                context?.setLineWidth(5.0) //線の太さ
+                for i in 0 ..< (detectedEye.count / 4){
+                    let x:Int = (detectedEye[i * 4 + 0] as! NSNumber as! Int  + Int(fx))
+                    let y:Int = (detectedEye[i * 4 + 1] as! NSNumber as! Int + Int(fy))
+                    let width:Int = detectedEye[i * 4 + 2] as! NSNumber as! Int
+                    let height:Int = detectedEye[i * 4 + 3] as! NSNumber as! Int
+                    context?.addRect(CGRect(x: x, y: y, width: width, height: height))
+                }
+                context?.strokePath()
+                resultImg = UIGraphicsGetImageFromCurrentImageContext()!
+                UIGraphicsEndImageContext()
+                
+            }else{
+                resultImg = img
+            }
             // *****************************************
             
             // 動画保存
@@ -247,7 +410,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     //imageViewの大きさを調整
     func setImageViewLayout(preset: AVCaptureSession.Preset){
-        let width = self.view.frame.width
+        let width = self.view.frame.width / 3
         var height:CGFloat
         switch preset {
         case .photo:
@@ -348,7 +511,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             // アセットライターにビデオ入力を接続
             assetWriter.add(videoAssetsInput)
             assetWriter.startWriting()
-            assetWriter.startSession(atSourceTime: kCMTimeZero)
+            assetWriter.startSession(atSourceTime: CMTime.zero)
         } catch {
             print("could not start video recording ", error)
         }
@@ -363,6 +526,61 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             ImageName.stopBtn.toUIImage() :
             ImageName.recordBtn.toUIImage()
         button.setImage(image, for: .normal)
+    }
+    
+    // *************** 時間 ***************
+    //時間をDoubleで取得する
+    func getCurrentTime() -> Double{
+        var tv = timeval()
+        gettimeofday(&tv, nil)
+        let t = Double(tv.tv_sec) + Double(tv.tv_usec) / 1000000.0
+        return t
+    }
+    
+    // *************** Winkの機能 ***************
+    var didActivate = false
+    func winkActivation(){
+        D("#########\(self.backView.center)")
+        WinkLabel.text = wink.rawValue
+
+        if !wink.isWink(){
+            didActivate = false
+            if !isBackViewOriginPos() && wink == .doubleEye{
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
+                    self.backView.center.y = self.view.center.y
+                }, completion: {result in D(self.backView.center)})
+            }
+            return
+        } //winkじゃなければBack
+        
+        if didActivate{ return } //使用済みでもだめ
+        
+        if wink == Wink.left{
+            if isBackViewOriginPos(){
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
+                    self.backView.center.y += self.backView.frame.size.height / 2
+                }, completion: {result in D(self.backView.center)})
+            }else if backView.center.y == view.center.y - self.view.frame.size.height / 2{
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
+                    self.backView.center.y += self.backView.frame.size.height / 2
+                }, completion: {result in D(self.backView.center)})
+            }
+        }else{
+            if isBackViewOriginPos(){
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
+                    self.backView.center.y += self.backView.frame.size.height / 2
+                }, completion: {result in D(self.backView.center)})
+            }else if backView.center.y == view.center.y - self.view.frame.size.height / 2{
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
+                    self.backView.center.y += self.backView.frame.size.height / 2
+                }, completion: {result in D(self.backView.center)})
+            }
+        }
+        didActivate = true
+    }
+    
+    func isBackViewOriginPos() -> Bool{
+        return backView.center == self.view.center
     }
 }
 

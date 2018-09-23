@@ -10,6 +10,8 @@
 		5711E7F9750701D278BE2104 /* Pods_OpenCVSampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2009A61E2B2134573C21B520 /* Pods_OpenCVSampleUITests.framework */; };
 		590ACBF132DDF46971F45BDE /* Pods_OpenCVSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9CF1C004A6DA402A7AAB42 /* Pods_OpenCVSample.framework */; };
 		912B020BBEEE4036D0581F8D /* Pods_OpenCVSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9E9BF3E9CAC60445D041BD /* Pods_OpenCVSampleTests.framework */; };
+		E232D4F6215731BD00F34778 /* DebugFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232D4F5215731BD00F34778 /* DebugFunc.swift */; };
+		E232D4F82157499A00F34778 /* Wink.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232D4F72157499A00F34778 /* Wink.swift */; };
 		E299875B214BA3170078E849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E299875A214BA3170078E849 /* AppDelegate.swift */; };
 		E299875D214BA3170078E849 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E299875C214BA3170078E849 /* ViewController.swift */; };
 		E2998760214BA3170078E849 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E299875E214BA3170078E849 /* Main.storyboard */; };
@@ -21,6 +23,10 @@
 		E2A3F9192154905800A8F756 /* ImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A3F9182154905800A8F756 /* ImageEnum.swift */; };
 		E2A3F91D2154960900A8F756 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A3F91C2154960900A8F756 /* Date.swift */; };
 		E2A3F9232154E75000A8F756 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A3F9222154E75000A8F756 /* UIImage.swift */; };
+		E2A3F95E215718D400A8F756 /* haarcascade_eye.xml in Resources */ = {isa = PBXBuildFile; fileRef = E2A3F95D215718D400A8F756 /* haarcascade_eye.xml */; };
+		E2A3F960215718DE00A8F756 /* haarcascade_frontalface_alt.xml in Resources */ = {isa = PBXBuildFile; fileRef = E2A3F95F215718DE00A8F756 /* haarcascade_frontalface_alt.xml */; };
+		E2A3F9622157199500A8F756 /* CascadeNameEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A3F9612157199500A8F756 /* CascadeNameEnum.swift */; };
+		E2A3F9642157230800A8F756 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A3F9632157230800A8F756 /* CGFloat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,8 @@
 		BF9E9BF3E9CAC60445D041BD /* Pods_OpenCVSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenCVSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA859D2DB0B13D32C1051EA7 /* Pods-OpenCVSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenCVSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenCVSample/Pods-OpenCVSample.release.xcconfig"; sourceTree = "<group>"; };
 		DAF48496AC33F71F50D26020 /* Pods-OpenCVSampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenCVSampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OpenCVSampleTests/Pods-OpenCVSampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		E232D4F5215731BD00F34778 /* DebugFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugFunc.swift; sourceTree = "<group>"; };
+		E232D4F72157499A00F34778 /* Wink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wink.swift; sourceTree = "<group>"; };
 		E2998757214BA3170078E849 /* OpenCVSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCVSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E299875A214BA3170078E849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E299875C214BA3170078E849 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +77,10 @@
 		E2A3F9182154905800A8F756 /* ImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEnum.swift; sourceTree = "<group>"; };
 		E2A3F91C2154960900A8F756 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		E2A3F9222154E75000A8F756 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		E2A3F95D215718D400A8F756 /* haarcascade_eye.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_eye.xml; sourceTree = "<group>"; };
+		E2A3F95F215718DE00A8F756 /* haarcascade_frontalface_alt.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_frontalface_alt.xml; sourceTree = "<group>"; };
+		E2A3F9612157199500A8F756 /* CascadeNameEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CascadeNameEnum.swift; sourceTree = "<group>"; };
+		E2A3F9632157230800A8F756 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +191,7 @@
 		E2998788214BA38C0078E849 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E2A3F95C215718C100A8F756 /* CascadeFile */,
 				E299875A214BA3170078E849 /* AppDelegate.swift */,
 				E2A3F91A2154905D00A8F756 /* Enum */,
 				E2998761214BA3180078E849 /* Assets.xcassets */,
@@ -192,6 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				E2A3F9182154905800A8F756 /* ImageEnum.swift */,
+				E2A3F9612157199500A8F756 /* CascadeNameEnum.swift */,
+				E232D4F72157499A00F34778 /* Wink.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -199,10 +214,21 @@
 		E2A3F91B215495F200A8F756 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E232D4F5215731BD00F34778 /* DebugFunc.swift */,
 				E2A3F91C2154960900A8F756 /* Date.swift */,
 				E2A3F9222154E75000A8F756 /* UIImage.swift */,
+				E2A3F9632157230800A8F756 /* CGFloat.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		E2A3F95C215718C100A8F756 /* CascadeFile */ = {
+			isa = PBXGroup;
+			children = (
+				E2A3F95F215718DE00A8F756 /* haarcascade_frontalface_alt.xml */,
+				E2A3F95D215718D400A8F756 /* haarcascade_eye.xml */,
+			);
+			path = CascadeFile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,14 +302,16 @@
 				TargetAttributes = {
 					E2998756214BA3170078E849 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1000;
 					};
 					E299876A214BA3180078E849 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = E2998756214BA3170078E849;
 					};
 					E2998775214BA3180078E849 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = E2998756214BA3170078E849;
 					};
 				};
@@ -313,6 +341,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2A3F960215718DE00A8F756 /* haarcascade_frontalface_alt.xml in Resources */,
+				E2A3F95E215718D400A8F756 /* haarcascade_eye.xml in Resources */,
 				E2998765214BA3180078E849 /* LaunchScreen.storyboard in Resources */,
 				E2998762214BA3180078E849 /* Assets.xcassets in Resources */,
 				E2998760214BA3170078E849 /* Main.storyboard in Resources */,
@@ -397,9 +427,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2A3F9642157230800A8F756 /* CGFloat.swift in Sources */,
+				E2A3F9622157199500A8F756 /* CascadeNameEnum.swift in Sources */,
 				E299875D214BA3170078E849 /* ViewController.swift in Sources */,
 				E2A3F91D2154960900A8F756 /* Date.swift in Sources */,
+				E232D4F6215731BD00F34778 /* DebugFunc.swift in Sources */,
 				E29987C9214DF7830078E849 /* OpenCV.mm in Sources */,
+				E232D4F82157499A00F34778 /* Wink.swift in Sources */,
 				E2A3F9192154905800A8F756 /* ImageEnum.swift in Sources */,
 				E299875B214BA3170078E849 /* AppDelegate.swift in Sources */,
 				E2A3F9232154E75000A8F756 /* UIImage.swift in Sources */,
@@ -588,7 +622,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpenCVSample/OpenCVSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -609,7 +643,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = KyoheiHakka.OpenCVSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpenCVSample/OpenCVSample-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -630,7 +664,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KyoheiHakka.OpenCVSampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenCVSample.app/OpenCVSample";
 			};
@@ -652,7 +686,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KyoheiHakka.OpenCVSampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenCVSample.app/OpenCVSample";
 			};
@@ -673,7 +707,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KyoheiHakka.OpenCVSampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = OpenCVSample;
 			};
@@ -694,7 +728,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KyoheiHakka.OpenCVSampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = OpenCVSample;
 			};
